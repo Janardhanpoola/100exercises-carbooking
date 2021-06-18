@@ -30,8 +30,8 @@ class Customer:
         if car in Manager.cars and car not in list(self.assign_car_dict.values()) :#if someone tries to book a car that doesn't exists in cars list or if a car is already booked by someone then it  throws an error msg to book after some time
             self.assign_car_dict[self.name]=car
             #timechange=datetime.now()+timedelta(hours=2)
-            print(f"Booking successful at {book_time}")
-            print(self.assign_car_dict)
+            print(f"{car} Booking successful at {book_time}\n")
+            print(str(self.assign_car_dict)+"\n")
 
         else:
             if car in Manager.cars: #if car exists in car database
@@ -39,7 +39,7 @@ class Customer:
                 timechange=timedif.strftime("%H:%M") #filtering the data so that we need only time in HH:MM
                 print(f"Requested car is not available to book..Please try again after {timechange}")
             else:
-                print("We dont have the requested car model")
+                print("We dont have the requested car model\n")
     
 
 
@@ -50,10 +50,10 @@ class Manager:
     cars=[]   
 
     def add_car(self,car):
-        self.cars.append(car)
+        return self.cars.append(car)
     
     def view_car(self):
-        return self.cars
+        return f'Available cars: {self.cars}\n'
 
     def del_car(self,car):
         self.cars.remove(car)
@@ -61,9 +61,9 @@ class Manager:
     def car_status(self,car):
         #print(Customer.assign_car_dict.values())
         if car in list(Customer.assign_car_dict.values()) : # if a person has already a car booked under his name ..he will given 'assigned' status else 'unassigned'
-            return 'assigned'
+            return f'status of  {car} is assigned\n'
         else:
-            return 'unassigned'
+            return f'status of {car} is unassigned\n'
 
 #creating car objects
 car1=Car('Thar','Mahindra',2020,'petrol')
@@ -77,6 +77,7 @@ car6=Car('Swift','Maruthi',2019,'petrol')
 #manager object
 m=Manager()
 
+
 #Adding cars
 m.add_car(car1.model)
 m.add_car(car2.model)
@@ -87,7 +88,7 @@ m.add_car(car5.model)
 
 m.del_car(car2.model) #removing 'creta' model
 
-print(m.view_car()) #viewing the cars list after deletion
+print( m.view_car()) #viewing the cars list after deletion
 
 print(m.car_status(car1.model)) #checking the car status before a customer books
 
@@ -112,8 +113,12 @@ c2.bookAcar(car4.model)
 
 c2.bookAcar('jh') #if cust. tries to book a car which does not exists in car database
 
+print(m.car_status(car3.model))
 
-c3.bookAcar(car4.model)
+c3.bookAcar(car3.model)
+
+print(m.car_status(car3.model))
+
 
 
 
