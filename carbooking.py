@@ -1,5 +1,5 @@
-import time
-from datetime import date, datetime,timedelta
+
+from datetime import  datetime,timedelta
 
 
 
@@ -22,9 +22,8 @@ class Customer:
         self.licenseID=licenseID
         self.address=address
         self.phone=phone
-    
 
-    def bookAcar(self,car): #method that helps customer to book a car
+    def bookacar(self,car): #method that helps customer to book a car
         now=datetime.now()
         book_time=now.strftime("%H:%M")
         if car in Manager.cars and car not in list(self.assign_car_dict.values()) :#if someone tries to book a car that doesn't exists in cars list or if a car is already booked by someone then it  throws an error msg to book after some time
@@ -40,18 +39,15 @@ class Customer:
                 print(f"Requested car is not available to book..Please try again after {timechange}")
             else:
                 print("We dont have the requested car model\n")
-    
 
 
 
 
 class Manager:
 
-    cars=[]   
-
+    cars=[]
     def add_car(self,car):
-        return self.cars.append(car)
-    
+        return self.cars.append(car)   
     def view_car(self):
         return f'Available cars: {self.cars}\n'
 
@@ -62,8 +58,7 @@ class Manager:
         #print(Customer.assign_car_dict.values())
         if car in list(Customer.assign_car_dict.values()) : # if a person has already a car booked under his name ..he will given 'assigned' status else 'unassigned'
             return f'status of  {car} is assigned\n'
-        else:
-            return f'status of {car} is unassigned\n'
+        return f'status of {car} is unassigned\n'
 
 #creating car objects
 car1=Car('Thar','Mahindra',2020,'petrol')
@@ -102,29 +97,21 @@ c3=Customer('Charan',66778,'Lck',875876)
 c4=Customer('Rajesh',1233,'KKL',76446)
 
 
-c1.bookAcar(car1.model)   #prints booking msg.
+#c1.bookAcar(car1.model)  #prints booking msg.
 
-print(m.car_status(car1.model)) #checking the status after car is booked
+c3.bookacar(car1.model)
 
-
-c2.bookAcar(car1.model)  # if customer2 tries to book car1 which is already booked by customer1..it throws error msg.
-
-c2.bookAcar(car4.model)
-
-c2.bookAcar('jh') #if cust. tries to book a car which does not exists in car database
-
-print(m.car_status(car3.model))
-
-c3.bookAcar(car3.model)
-
-print(m.car_status(car3.model))
+# print(m.car_status(car1.model)) #checking the status after car is booked
 
 
+# c2.bookAcar(car1.model)  # if customer2 tries to book car1 which is already booked by customer1..it throws error msg.
 
+# c2.bookAcar(car4.model)
 
+# c2.bookAcar('jh') #if cust. tries to book a car which does not exists in car database
 
+# print(m.car_status(car3.model))
 
+# c3.bookAcar(car3.model)
 
-
-        
-
+# print(m.car_status(car3.model))

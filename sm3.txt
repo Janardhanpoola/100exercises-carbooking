@@ -1,0 +1,29 @@
+damn
+that correct
+cruels
+True
+okiess
+
+# l=[5,-1,4,8,6]
+
+# ind={ele:i for i,ele in enumerate(l)}
+
+# print(ind)
+
+# sl=sorted(l)
+
+# print(sl)
+
+# ri=(len(sl)+1)//2
+# print(ri)
+
+# indi=[]
+# for i in sl:
+#     indi.append(ind[i])
+# print(indi)
+
+# zpd=dict(zip(sl,indi))
+
+# res={k:v for k,v in sorted(zpd.items(),key=lambda x:x[1])}
+
+# print(res.keys())

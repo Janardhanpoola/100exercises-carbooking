@@ -1,0 +1,8 @@
+system {
+    host-name host-211;
+    domain-name domain-122;
+    backup-router 192.168.71.254;
+    arp;
+    authentication-order [ radius password tacplus ];
+} 
+
